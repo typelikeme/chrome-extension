@@ -1,0 +1,27 @@
+{
+  "name": "TypeLikeMe Typing Assistant",
+  "version": "0.1.0",
+  "description": "Chrome extention for leveraging text predictions based on machine learning models trained via typelike.me.",
+  "manifest_version": 2,
+  "permissions": ["storage", "activeTab"],
+  "background": {
+    "scripts": ["dist/js/background.js"],
+    "persistent": false
+  },
+  "options_page": "dist/options.html",
+  "page_action": {
+    "default_icon": {
+      "32": "favicon.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["dist/js/content.js"],
+      "css": ["dist/css/dropdown.min.css"]
+    }
+  ],
+  "icons": {
+    "32": "favicon.png"
+  }
+}

@@ -1,0 +1,36 @@
+{
+  "name": "@typelikeme/chrome-extenstion",
+  "version": "1.0.0",
+  "description": "Chrome extention for leveraging text predictions based on machine learning models trained via typelike.me",
+  "main": "src/js/index.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/typelikeme/chrome-extension.git"
+  },
+  "keywords": [
+    "text",
+    "prediction",
+    "machine",
+    "learning",
+    "tensorflow",
+    "chrome",
+    "extenstion"
+  ],
+  "author": "Sergiu Ionescu",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/typelikeme/chrome-extension/issues"
+  },
+  "homepage": "https://github.com/typelikeme/chrome-extension#readme",
+  "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "rollup": "^1.17.0",
+    "rollup-plugin-babel-minify": "^9.0.0",
+    "rollup-plugin-copy": "^3.1.0",
+    "rollup-plugin-eslint": "^7.0.0",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  },
+  "dependencies": {
+    "@typelikeme/tlmjs": "^1.0.3"
+  }
+}
