@@ -6,21 +6,13 @@
   "permissions": ["storage", "activeTab"],
   "background": {
     "scripts": ["dist/js/background.js"],
-    "persistent": false
+    "persistent": true
   },
   "options_page": "dist/options.html",
-  "page_action": {
-    "default_icon": {
-      "32": "favicon.png"
-    }
+  "browser_action": {
+    "default_icon":  "favicon.png",
+    "default_title": "Enable TypeLikeMe Assistant"
   },
-  "content_scripts": [
-    {
-      "matches": ["<all_urls>"],
-      "js": ["dist/js/content.js"],
-      "css": ["dist/css/dropdown.min.css"]
-    }
-  ],
   "icons": {
     "32": "favicon.png"
   }

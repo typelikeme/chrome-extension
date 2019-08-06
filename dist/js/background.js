@@ -1,5 +1,9 @@
-chrome.runtime.onInstalled.addListener(function() {
-    chrome.storage.local.set({active: 1}, function() {
-        console.log('Now Active');
+chrome.browserAction.onClicked.addListener(function (tab) {
+    chrome.tabs.executeScript({
+        file: 'dist/js/content.js'
+    });
+    chrome.tabs.insertCSS({
+        file: 'dist/css/dropdown.min.css'
     });
 });
+
