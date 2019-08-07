@@ -1,6 +1,5 @@
 function refresh() {
-    chrome.storage.local.get(['active', 'attachInput', 'attachTextarea', 'key'], function (result) {
-        document.getElementById('active').checked = result.active;
+    chrome.storage.local.get(['attachInput', 'attachTextarea', 'key'], function (result) {
         document.getElementById('attach-to-input').checked = result.attachInput;
         document.getElementById('attach-to-textarea').checked = result.attachTextarea;
         document.getElementById('key').value = result.key;
@@ -8,11 +7,14 @@ function refresh() {
 }
 refresh();
 
-document.getElementById('active').addEventListener('change', function(){
-    chrome.storage.local.set({active: document.getElementById('active').checked}, function() {
-        refresh();
-    });
+
+chrome.tabs.executeScript({
+    file: 'dist/js/content.js'
 });
+chrome.tabs.insertCSS({
+    file: 'dist/css/dropdown.min.css'
+});
+    
 document.getElementById('attach-to-input').addEventListener('change', function(){
     chrome.storage.local.set({attachInput: document.getElementById('attach-to-input').checked}, function() {
         refresh();
@@ -28,3 +30,5 @@ document.getElementById('key').addEventListener('blur', function(){
         refresh();
     });
 });
+
+chrome.browserAction.setIcon({path:"icon.png"});

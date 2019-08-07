@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html style="font-size: 0.7em; background-color: gray;">
+  <head>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div style="min-width: 400px;" class="p-1">
+      <form>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item list-group-item-action">
+            <div class="form-check">
+              <input
+                type="checkbox"
+                id="attach-to-input"
+                name="attach-to-input"
+                class="form-check-input"
+              />
+              <label for="attach-to-input" style="display: block;" class="form-check-label"
+                >Attach to input elements</label
+              >
+            </div>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <div class="form-check">
+              <input
+                type="checkbox"
+                id="attach-to-textarea"
+                name="attach-to-textarea"
+                class="form-check-input"
+              />
+              <label for="attach-to-textarea" style="display: block;" class="form-check-label"
+                >Attach to textarea elements</label
+              >
+            </div>
+          </li>
+          <li class="list-group-item list-group-item-action">
+            <div class="form-group">
+              <label for="key">Model Key</label>
+              <input type="text" id="key" name="key" class="form-control" />
+            </div>
+          </li>
+        </ul>
+      </form>
+    </div>
+
+    <script src="/dist/js/options.js"></script>
+  </body>
+</html>
