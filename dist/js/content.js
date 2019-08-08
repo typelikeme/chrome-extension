@@ -1,4 +1,4 @@
-(function () {
+var Tlm = typeof Tlm != 'undefined' ? Tlm : (function (exports) {
     'use strict';
 
     /**
@@ -884,7 +884,7 @@
     class Tlm {
         constructor(key) {
             this.maxSuggestions = 10;
-            this.minProbability = 0.0001;
+            this.minProbability = 0.00001;
             var path = 'https://cdn.typelike.me/models/word-predict/' + key + '/';
             let tlm = this;
 
@@ -918,7 +918,7 @@
 
                             if (!keyword) {
                                 var inputElement = element;
-                                var text = inputElement.value;
+                                var text = inputElement.tagName =='DIV' ? inputElement.textContent : inputElement.value;
                                 var predictEnd = inputElement.selectionStart;
                                 text = text.slice(0, predictEnd);
                                 var predictStart = text.lastIndexOf('.') + 1;
@@ -988,27 +988,13 @@
         return new Tlm(key);
     }
 
-    chrome.storage.local.get(["key", "attachInput", "attachTextarea"], function(
-      result
-    ) {
-      let tlm = predictor(result.key);
+    function getPredictor() {
+        document.head.classList.add("tlmjs-predictor-loaded");
+        return predictor;
+    }
 
-      if (result.attachTextarea) {
-        let textareaList = document.getElementsByTagName("textarea");
-        for (var i = 0; i < textareaList.length; i++) {
-          if (!textareaList[i].hasOwnProperty("data-autosuggest_is-input")) {
-            tlm.attach(textareaList[i]);
-          }
-        }
-      }
-      if (result.attachInput) {
-        let inputList = document.querySelectorAll("input[type=text]");
-        for (var i = 0; i < inputList.length; i++) {
-          if (!inputList[i].hasOwnProperty("data-autosuggest_is-input")) {
-            tlm.attach(inputList[i]);
-          }
-        }
-      }
-    });
+    exports.getPredictor = getPredictor;
 
-}());
+    return exports;
+
+}({}));

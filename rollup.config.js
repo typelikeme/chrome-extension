@@ -6,7 +6,7 @@ export default {
     output: {
         file: 'dist/js/content.js',
         format: 'iife',
-        name: 'tlmcontent'
+        name: 'Tlm'
     },
     plugins: [
         resolve({
