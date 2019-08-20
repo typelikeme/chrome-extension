@@ -3,8 +3,10 @@ chrome.storage.local.get(["key", "attachInput", "attachTextarea", "attachContent
   ) {
     let predictor = Tlm.getPredictor();
     let tlm = predictor(result.key);
+    let attachTextarea = typeof result.attachTextarea == 'undefined' ? true : result.attachTextarea;
+    let attachInput = typeof result.attachInput == 'undefined' ? true : result.attachInput;
   
-    if (result.attachTextarea) {
+    if (attachTextarea) {
       let textareaList = document.getElementsByTagName("textarea");
       for (var i = 0; i < textareaList.length; i++) {
         if (!textareaList[i].hasOwnProperty("data-autosuggest_is-input")) {
@@ -12,7 +14,7 @@ chrome.storage.local.get(["key", "attachInput", "attachTextarea", "attachContent
         }
       }
     }
-    if (result.attachInput) {
+    if (attachInput) {
       let inputList = document.querySelectorAll("input[type=text]");
       for (var i = 0; i < inputList.length; i++) {
         if (!inputList[i].hasOwnProperty("data-autosuggest_is-input")) {

@@ -1,6 +1,6 @@
 {
   "name": "@typelikeme/chrome-extenstion",
-  "version": "0.4.0",
+  "version": "0.4.2",
   "description": "Chrome extention for leveraging text predictions based on machine learning models trained via typelike.me",
   "main": "src/js/index.ts",
   "repository": {

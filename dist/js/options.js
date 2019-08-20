@@ -13,7 +13,7 @@ function refresh() {
                 found = true;
             }
         }
-        if(found && document.getElementById('key').value) {
+        if (found && document.getElementById('key').value) {
             document.getElementById('key').disabled = true;
         } else {
             document.getElementById('key').disabled = false;
@@ -30,21 +30,21 @@ function attach() {
             file: 'dist/js/init.js'
         });
     });
-    
+
     chrome.tabs.insertCSS({
         file: 'dist/css/dropdown.min.css'
     });
-    chrome.browserAction.setIcon({path:"icon.png"});
+    chrome.browserAction.setIcon({ path: "icon.png" });
 }
 
-    
-document.getElementById('attach-to-input').addEventListener('change', function(){
-    chrome.storage.local.set({attachInput: document.getElementById('attach-to-input').checked}, function() {
+
+document.getElementById('attach-to-input').addEventListener('change', function () {
+    chrome.storage.local.set({ attachInput: document.getElementById('attach-to-input').checked }, function () {
         refresh();
     });
 });
-document.getElementById('attach-to-textarea').addEventListener('change', function(){
-    chrome.storage.local.set({attachTextarea: document.getElementById('attach-to-textarea').checked}, function() {
+document.getElementById('attach-to-textarea').addEventListener('change', function () {
+    chrome.storage.local.set({ attachTextarea: document.getElementById('attach-to-textarea').checked }, function () {
         refresh();
     });
 });
@@ -53,13 +53,18 @@ document.getElementById('attach-to-textarea').addEventListener('change', functio
 //         refresh();
 //     });
 // });
-document.getElementById('model').addEventListener('change', function(){
-    chrome.storage.local.set({key: document.getElementById('model').value}, function() {
+document.getElementById('model').addEventListener('change', function () {
+    chrome.storage.local.set({ key: document.getElementById('model').value }, function () {
         attach();
+        refresh();
+        chrome.tabs.getSelected(null, function (tab) {
+            var code = 'window.location.reload();';
+            chrome.tabs.executeScript(tab.id, { code: code });
+        });
     });
 });
-document.getElementById('key').addEventListener('blur', function(){
-    chrome.storage.local.set({key: document.getElementById('key').value}, function() {
+document.getElementById('key').addEventListener('blur', function () {
+    chrome.storage.local.set({ key: document.getElementById('key').value }, function () {
         refresh();
     });
 });
